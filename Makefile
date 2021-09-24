@@ -6,4 +6,3 @@ run:
 	@go run main.go
 build:
 	@go build -o digitalent-make
-	@./digitalent-make
