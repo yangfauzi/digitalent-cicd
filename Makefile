@@ -6,3 +6,5 @@ run:
 	@go run main.go
 build:
 	@go build -o digitalent-make
+lint:
+	@go fmt ./...
