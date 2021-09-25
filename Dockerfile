@@ -1,10 +1,13 @@
 FROM golang:alpine AS builder
 
+RUN mkdir /app
+COPY . /app
 WORKDIR /app
-COPY . .
-RUN go build -o /digitalent-cicd
+RUN make build
 
 FROM alpine:latest
-COPY --from=builder /digitalent-cicd /digitalent-cicd
+RUN mkdir /app
+WORKDIR /app
+COPY --from=builder /app/main /app/
 
-CMD ["/digitalent-cicd"]
+CMD ["/app/main"]
